@@ -3,15 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 namespace RogueLikeRpg
 {
-    class Program
+    public class Item
     {
-        static void Main(string[] args)
+        public string Name { get; set; }
+
+        public Item(string name)
         {
-            GameManager.Instance.GameStart();
+            Name = name;
         }
+
     }
 }
-
-
