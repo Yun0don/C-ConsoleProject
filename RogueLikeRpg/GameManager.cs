@@ -18,15 +18,21 @@ namespace RogueLikeRpg
 
         public void GameStart()
         {
-            Console.WriteLine("====================================================");
-            Console.WriteLine("====================================================");
-            Console.WriteLine("============= C# Roguelike Dice RPG ================");
-            Console.WriteLine("====================================================");
-            Console.WriteLine("===============    GAME START    ===================");
-            Console.WriteLine("====================================================");
-            Console.WriteLine("===============   Press any key  ===================");
-            Console.WriteLine("====================================================");
-            Console.WriteLine("====================================================");
+            Console.WriteLine("****************************************************");
+            Console.WriteLine("*                                                  *");
+            Console.WriteLine("* ■■■    ■■■   ■    ■   ■■■   ■■■■  *");
+            Console.WriteLine("* ■   ■  ■    ■  ■    ■  ■        ■        *");
+            Console.WriteLine("* ■■■   ■    ■  ■    ■  ■■■■  ■■■■  *");
+            Console.WriteLine("* ■  ■   ■    ■  ■    ■  ■    ■  ■        *");
+            Console.WriteLine("* ■   ■   ■■■   ■■■■   ■■■   ■■■■  *");
+            Console.WriteLine("*                                                  *");
+            Console.WriteLine("****************************************************");
+            Console.WriteLine("*                G A M E   S T A R T               *");
+            Console.WriteLine("****************************************************");
+            Console.WriteLine("*                                                  *");
+            Console.WriteLine("*              PRESS ANY KEY TO CONTINUE...        *");
+            Console.WriteLine("*                                                  *");
+            Console.WriteLine("****************************************************");
             Console.ReadKey();
 
             PlayerClass chosenClass = SelectClassType();
@@ -42,13 +48,21 @@ namespace RogueLikeRpg
         private PlayerClass SelectClassType()
         {
             Console.Clear();
-            Console.WriteLine("=====================================================");
-            Console.WriteLine("=====================================================");
-            Console.WriteLine("==========       직업을 선택하세요         ==========");
-            Console.WriteLine("=====================================================");
-            Console.WriteLine("==========   1.전사   2.도적   3.마법사    ==========");
-            Console.WriteLine("=====================================================");
-            Console.WriteLine("=====================================================");
+            Console.WriteLine("****************************************************");
+            Console.WriteLine("*                                                  *");
+            Console.WriteLine("* ■■■    ■■■   ■    ■   ■■■   ■■■■  *");
+            Console.WriteLine("* ■   ■  ■    ■  ■    ■  ■        ■        *");
+            Console.WriteLine("* ■■■   ■    ■  ■    ■  ■■■■  ■■■■  *");
+            Console.WriteLine("* ■  ■   ■    ■  ■    ■  ■    ■  ■        *");
+            Console.WriteLine("* ■   ■   ■■■   ■■■■   ■■■   ■■■■  *");
+            Console.WriteLine("*                                                  *");
+            Console.WriteLine("****************************************************");
+            Console.WriteLine("*                직업을 선택하세요                 *");
+            Console.WriteLine("****************************************************");
+            Console.WriteLine("*                                                  *");
+            Console.WriteLine("*            1.전사   2.도적   3.마법사           *");
+            Console.WriteLine("*                                                  *");
+            Console.WriteLine("****************************************************");
 
             while (true)
             {
