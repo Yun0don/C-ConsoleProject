@@ -4,29 +4,23 @@ namespace RogueLikeRpg
 {
     public class GameManager
     {
-        // 싱글톤 인스턴스
         private static GameManager instance = null;
         public static GameManager Instance
         {
             get
             {
                 if (instance == null)
-                {
                     instance = new GameManager();
-                }
                 return instance;
             }
         }
-
-        // 생성자 private → 외부에서 인스턴스 생성 방지
         private GameManager() { }
 
-        // 게임 시작
         public void GameStart()
         {
             Console.WriteLine("====================================================");
             Console.WriteLine("====================================================");
-            Console.WriteLine("=============== C# Roguelike RPG ===================");
+            Console.WriteLine("============= C# Roguelike Dice RPG ================");
             Console.WriteLine("====================================================");
             Console.WriteLine("===============    GAME START    ===================");
             Console.WriteLine("====================================================");
@@ -37,12 +31,14 @@ namespace RogueLikeRpg
 
             PlayerClass chosenClass = SelectClassType();
             PlayerType player = new PlayerType(24, 12, chosenClass); // 맵 정중앙
-            Dungeon dungeon = new Dungeon();
 
-            GameLoop(player, dungeon);
+            DungeonManager dungeonManager = new DungeonManager();
+            MonsterManager monsterManager = new MonsterManager();
+            ItemManager itemManager = new ItemManager();
+           
+            GameLoop(player, dungeonManager, monsterManager, itemManager);
         }
 
-        // 직업 선택
         private PlayerClass SelectClassType()
         {
             Console.Clear();
@@ -58,7 +54,6 @@ namespace RogueLikeRpg
             {
                 char input = Console.ReadKey().KeyChar;
                 Console.WriteLine();
-
                 switch (input)
                 {
                     case '1': return PlayerClass.Warrior;
@@ -67,24 +62,53 @@ namespace RogueLikeRpg
                     default:
                         Console.WriteLine("잘못된 입력입니다. 1, 2, 3 중 하나를 선택하세요.");
                         break;
+
                 }
             }
         }
 
-        // 메인 게임 루프
-        private void GameLoop(PlayerType player, Dungeon dungeon)
+        private void GameLoop(PlayerType player, DungeonManager dungeonManager,
+                            MonsterManager monsterManager, ItemManager itemManager)
         {
             while (true)
             {
-                Console.SetCursorPosition(0, 0); // 깜빡임 방지
-                dungeon.DisplayMap(player);
-
-                Console.WriteLine("이동: W(↑) A(←) S(↓) D(→)");
-                Console.Write("명령 입력: ");
+                Console.SetCursorPosition(0, 0);
+                dungeonManager.DisplayCurrentDungeon(player);
+                player.CreatePlayer();
+                
+                Console.WriteLine("이동: W(↑) A(←) S(↓) D(→) / >: 내려가기 / <: 올라가기");
                 char input = char.ToLower(Console.ReadKey().KeyChar);
-                dungeon.ClearPlayerPosition(player);
-                player.Move(input, dungeon.Map);
+
+                if (player.IsInventoryOpen)
+                {
+                    player.HandleInventoryInput(input);
+                }
+                else
+                {
+                    if (input == '.') // >
+                    {
+                        dungeonManager.GoDown(player);
+                    }
+                    else if (input == ',') // <<
+                    {
+                        dungeonManager.GoUp(player);
+                    }
+                    else
+                    {
+                        dungeonManager.CurrentDungeon.ClearPlayerPosition(player);
+                        player.Move(input, dungeonManager.CurrentDungeon.Map, player);
+                    }
+                    dungeonManager.CheckCurrentFloor(player, itemManager);
+                }
+
+                Random random = new Random();
+                if (random.Next(100) < 0)
+                {
+                    Console.Clear();
+                    monsterManager.SpawnMonster(player);
+                }
             }
         }
+
     }
 }

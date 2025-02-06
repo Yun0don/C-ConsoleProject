@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RogueLikeRpg
+namespace RogueLikeRpg // partial도 부모취급당한다.
 {
     public partial class Player
     {
-        public int X { get; private set; }
-        public int Y { get; private set; }
-        public char Symbol { get; set; }
+        public int X { get; protected set; }
+        public int Y { get;  protected set; }
+        public char Symbol { get; protected set; }
 
         public Player(int startX, int startY, PlayerClass playerClass)
         {
@@ -31,7 +31,7 @@ namespace RogueLikeRpg
                 return '?';
         }
 
-        public void Move(char direction, char[,] map)
+        public void Move(char direction, char[,] map, Player player)
         {
             int newX = X;
             int newY = Y;
@@ -40,10 +40,16 @@ namespace RogueLikeRpg
             else if (direction == 's') newY++; // 아래로 이동
             else if (direction == 'a') newX--; // 왼쪽으로 이동
             else if (direction == 'd') newX++; // 오른쪽으로 이동
-            else
+            else if (direction == 'i')
             {
-                Console.WriteLine("잘못된 입력입니다.");
-                return;
+                if(IsInventoryOpen)
+                {
+                    CloseInventory();
+                }
+                else
+                {
+                    ShowInventory();
+                }
             }
 
             if (IsValidMove(newX, newY, map))
