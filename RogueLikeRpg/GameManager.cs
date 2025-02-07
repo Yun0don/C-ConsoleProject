@@ -60,7 +60,7 @@ namespace RogueLikeRpg
             Console.WriteLine("*                직업을 선택하세요                 *");
             Console.WriteLine("****************************************************");
             Console.WriteLine("*                                                  *");
-            Console.WriteLine("*            1.전사   2.도적   3.마법사           *");
+            Console.WriteLine("*            1.전사   2.도적   3.마법사            *");
             Console.WriteLine("*                                                  *");
             Console.WriteLine("****************************************************");
 
@@ -82,14 +82,17 @@ namespace RogueLikeRpg
         }
 
         private void GameLoop(PlayerType player, DungeonManager dungeonManager,
-                            MonsterManager monsterManager, ItemManager itemManager)
+                            MonsterManager monsterManager, ItemManager itemManager  )
         {
+            Console.Clear();
+            Random random = new Random();
+
             while (true)
             {
                 Console.SetCursorPosition(0, 0);
-                dungeonManager.DisplayCurrentDungeon(player);
+                player.RenderMap(dungeonManager.CurrentDungeon); // 플레이어 시야 제한 적용하여 맵 출력
                 player.CreatePlayer();
-                
+
                 Console.WriteLine("이동: W(↑) A(←) S(↓) D(→) / >: 내려가기 / <: 올라가기");
                 char input = char.ToLower(Console.ReadKey().KeyChar);
 
@@ -99,27 +102,42 @@ namespace RogueLikeRpg
                 }
                 else
                 {
-                    if (input == '.') // >
+                    dungeonManager.CurrentDungeon.ClearPlayerPosition(player);
+
+                    if (input == '.') // 내려가기
                     {
-                        dungeonManager.GoDown(player);
+                        if (player.X == dungeonManager.CurrentDungeon.DownPortal.x && player.Y == dungeonManager.CurrentDungeon.DownPortal.y)
+                        {
+                            dungeonManager.GoDown(player);
+                        }
+                        else
+                        {
+                            Console.WriteLine("포탈이 없습니다. 내려갈 수 없습니다.");
+                        }
                     }
-                    else if (input == ',') // <<
+                    else if (input == ',') //올라가기
                     {
-                        dungeonManager.GoUp(player);
+                        if (player.X == dungeonManager.CurrentDungeon.UpPortal.x && player.Y == dungeonManager.CurrentDungeon.UpPortal.y)
+                        {
+                            dungeonManager.GoUp(player);
+                        }
+                        else
+                        {
+                            Console.WriteLine("포탈이 없습니다. 올라갈 수 없습니다.");
+                        }
                     }
                     else
                     {
-                        dungeonManager.CurrentDungeon.ClearPlayerPosition(player);
                         player.Move(input, dungeonManager.CurrentDungeon.Map, player);
                     }
                     dungeonManager.CheckCurrentFloor(player, itemManager);
-                }
 
-                Random random = new Random();
-                if (random.Next(100) < 0)
-                {
-                    Console.Clear();
-                    monsterManager.SpawnMonster(player);
+                    // 5% 확률로 몬스터 전투 시작
+                    if (random.Next(100) < 0)
+                    {
+                        Console.Clear();
+                        monsterManager.SpawnMonster(player);
+                    }
                 }
             }
         }

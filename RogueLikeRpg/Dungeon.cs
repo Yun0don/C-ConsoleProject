@@ -92,11 +92,7 @@ namespace RogueLikeRpg
         }
         public void ClearPlayerPosition(Player player)
         {
-            // 포탈 사라지는거 예외처리
-            if (Map[player.Y, player.X] != 'v' && Map[player.Y, player.X] != '^')
-            {
-                Map[player.Y, player.X] = '.';
-            }
+             Map[player.Y, player.X] = '.';
         }
         // 내려가는 포탈 배치 ('v')
         public void PlaceDownPortal()

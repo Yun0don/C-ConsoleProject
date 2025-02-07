@@ -12,3 +12,10 @@ C:\Users\soyuh\Desktop\KGA\Project\RoguelikeRpg\RogueLikeRpg\obj\Debug\RogueLike
 C:\Users\soyuh\Desktop\KGA\Project\RoguelikeRpg\RogueLikeRpg\obj\Debug\RogueLikeRpg.csproj.CoreCompileInputs.cache
 C:\Users\soyuh\Desktop\KGA\Project\RoguelikeRpg\RogueLikeRpg\obj\Debug\RogueLikeRpg.exe
 C:\Users\soyuh\Desktop\KGA\Project\RoguelikeRpg\RogueLikeRpg\obj\Debug\RogueLikeRpg.pdb
+C:\Users\soyuh\Desktop\KGA\Project\RoguelikeRpg - 복사본\RogueLikeRpg\bin\Debug\RogueLikeRpg.exe.config
+C:\Users\soyuh\Desktop\KGA\Project\RoguelikeRpg - 복사본\RogueLikeRpg\bin\Debug\RogueLikeRpg.exe
+C:\Users\soyuh\Desktop\KGA\Project\RoguelikeRpg - 복사본\RogueLikeRpg\bin\Debug\RogueLikeRpg.pdb
+C:\Users\soyuh\Desktop\KGA\Project\RoguelikeRpg - 복사본\RogueLikeRpg\obj\Debug\RogueLikeRpg.csproj.AssemblyReference.cache
+C:\Users\soyuh\Desktop\KGA\Project\RoguelikeRpg - 복사본\RogueLikeRpg\obj\Debug\RogueLikeRpg.csproj.CoreCompileInputs.cache
+C:\Users\soyuh\Desktop\KGA\Project\RoguelikeRpg - 복사본\RogueLikeRpg\obj\Debug\RogueLikeRpg.exe
+C:\Users\soyuh\Desktop\KGA\Project\RoguelikeRpg - 복사본\RogueLikeRpg\obj\Debug\RogueLikeRpg.pdb

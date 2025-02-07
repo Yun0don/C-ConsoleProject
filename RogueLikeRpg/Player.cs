@@ -160,7 +160,7 @@ namespace RogueLikeRpg
                     ShowInventory();
                     break;
 
-                case (char)13:  // ✅ Enter 키 (아이템 사용)
+                case (char)13:  // Enter 키 (아이템 사용)
                     if (Inventory.Count > 0)
                     {
                         Item selectedItem = Inventory[selectedItemIndex];
