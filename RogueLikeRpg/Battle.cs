@@ -55,12 +55,9 @@ namespace RogueLikeRpg
 
             if (choice == '1')
             {
-                int damage = DiceRoller.RollDice(player.Att);
+                // Attack() 메서드 내부에서 도적일 경우 50% 확률로 주사위를 두 번 던집니다.
+                int damage = player.Attack();
                 monster.TakeDamage(damage);
-                // 주사위를 굴림
-                // 주사위 값을 확인함
-                // 주사위 굴리고 확인하는건 dice class에서 하고 가져올것
-
             }
             else if (choice == '2')
             {

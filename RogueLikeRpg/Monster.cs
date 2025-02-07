@@ -43,7 +43,7 @@ namespace RogueLikeRpg
             public MonsterManager()
             {
                 // 몬스터 초기 생성
-                monsters.Add(new Monster("슬라임", 20, 20, 5, '~'));
+                monsters.Add(new Monster("슬라임", 20, 20, 5, '~'));  
                 monsters.Add(new Monster("고블린", 30, 30, 8, '='));
                 monsters.Add(new Monster("오크", 50, 50, 12, 'ㅁ' ));
                 monsters.Add(new Monster("늑대", 35, 35, 10, 'X'));

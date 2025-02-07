@@ -26,7 +26,7 @@ namespace RogueLikeRpg
         }
         // 직업별 문양 표시를 자식에서 가져옴
         protected abstract char GetClassSymbol();
-        public void CreatePlayer()
+        public void CreatePlayer(DungeonManager dungeonManager)
         {
 
             Console.WriteLine("=====================================");
@@ -38,12 +38,13 @@ namespace RogueLikeRpg
             Console.WriteLine("=====================================");
             int[] faces = new int[] { Dice.Top, Dice.Bottom, Dice.Front, Dice.Back, Dice.Right, Dice.Left };
             Array.Sort(faces);
-            Console.WriteLine("        눈금 => " + string.Join(",", faces)); 
+            Console.WriteLine("        눈금 => " + string.Join(",", faces));
             // 보유주사위 눈금 => ex 1,2,3,4,5,6
             Console.WriteLine("=====================================");
-            Console.WriteLine($"        인벤토리 체크 => (i) ");
+            Console.WriteLine($"        인벤토리 열기 => (i) ");
             Console.WriteLine("=====================================");
-
+            Console.WriteLine($"        현재 던전 => {dungeonManager.GetCurrentFloor()}층");
+            Console.WriteLine("=====================================");
         }
 
         public void TakeDamage(int damage)
@@ -52,7 +53,7 @@ namespace RogueLikeRpg
             if (Hp <= 0)
             {
                 Console.WriteLine("플레이어가 사망했습니다.");
-                Respawn();
+              //   Respawn();
             }
         }
 
@@ -77,12 +78,12 @@ namespace RogueLikeRpg
             Console.WriteLine($"레벨업! 현재 레벨: {Level}");
         }
 
-        private void Respawn()
-        {
-            Console.WriteLine("부활 중... 아이템은 유지됩니다.");
-            Hp = MaxHp;
-            Exp = 0;
-        }
+    //   private void Respawn()
+    //   {
+    //       Console.WriteLine("부활 중... 아이템은 유지됩니다.");
+    //       Hp = MaxHp;
+    //       Exp = 0;
+    //   }
 
 
         // 아이템 클래스 관련 메서드 간접접근
@@ -202,7 +203,10 @@ namespace RogueLikeRpg
             X = newX;
             Y = newY;
         }
-
+        public virtual int Attack()
+        {
+            return Att;
+        }
 
 
 

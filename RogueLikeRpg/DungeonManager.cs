@@ -5,7 +5,7 @@ namespace RogueLikeRpg
 {
     public class DungeonManager
     {
-        private const int MaxFloor = 5;
+        private const int MaxFloor =99;
         private Stack<Dungeon> dungeonStack = new Stack<Dungeon>();
 
         public DungeonManager()
@@ -95,5 +95,10 @@ namespace RogueLikeRpg
                 Console.WriteLine("위 포탈 위에 있지 않습니다.");
             }
         }
+        public int GetCurrentFloor()
+        {
+            return dungeonStack.Count; // 현재 층 수 반환
+        }
+
     }
 }

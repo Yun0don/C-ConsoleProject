@@ -5,27 +5,24 @@ namespace RogueLikeRpg
 {
     public static class DiceRoller
     {
+        // Random 인스턴스를 클래스 수준에서 생성 (여러번 새 인스턴스를 만들지 않도록)
+        private static Random rand = new Random();
+
         /// <summary>
-        /// 주사위를 던져서 포물선 궤적 애니메이션을 실행한 후 최종 윗면 값을 기반으로
-        /// 배율을 적용하여 최종 공격력을 결정하고 반환합니다.
+        /// 플레이어가 장착한 주사위를 이용하여 애니메이션 효과와 함께 주사위를 굴린 후,
+        /// 최종 윗면에 따른 배율을 적용하여 최종 공격력을 계산하고 반환합니다.
         /// </summary>
         /// <param name="baseAttack">플레이어의 기본 공격력</param>
+        /// <param name="dice">플레이어가 장착한 주사위</param>
         /// <returns>계산된 최종 공격력</returns>
-        public static int RollDice(int baseAttack)
+        public static int RollDice(int baseAttack, Dice dice)
         {
-            Random rand = new Random();
-
-            // TODO: 향후 다른 주사위 종류를 지원할 수 있도록 확장 (예: SilverDice, GoldDice 등)
-            Dice dice = new Dice("Bronze Dice");  // Dice 클래스는 RollNorth(), RollSouth() 등 메서드를 제공한다고 가정
-
             // 애니메이션 설정
             int totalFrames = 20;      // 애니메이션 프레임 수
             int delay = 25;            // 프레임 간 딜레이 (밀리초)
-
-            // 포물선 궤적 파라미터
-            int startX = 0;            // 시작 X 좌표
-            int startY = 15;           // "바닥" 위치에 해당하는 Y 좌표
-            int peakHeight = 15;       // 궤적의 최대 높이 (값이 클수록 궤적이 높아짐)
+            int startX = 0;            // 애니메이션 시작 X 좌표
+            int startY = 15;           // 애니메이션 시작 Y 좌표 ("바닥" 위치)
+            int peakHeight = 15;       // 포물선 궤적의 최대 높이
             int horizontalDelta = 2;   // 프레임당 X 좌표 증가량
 
             // 포물선 궤적 애니메이션 실행
@@ -34,12 +31,12 @@ namespace RogueLikeRpg
                 Console.Clear();
                 Console.WriteLine("스페이스바 => 애니메이션 스킵");
 
-                // t는 0 ~ π 사이의 값으로, sin(t)를 이용해 포물선 궤적 (0 → 1 → 0)을 만듭니다.
+                // 0 ~ π 사이의 t 값을 이용해 포물선 궤적 (0→1→0)을 생성
                 double t = Math.PI * frame / totalFrames;
                 int currentY = startY - (int)(peakHeight * Math.Sin(t));
                 int currentX = startX + horizontalDelta * frame;
 
-                // 매 프레임마다 무작위 회전 동작을 적용하여 실제 주사위의 구조(반대 면의 합 7)를 반영합니다.
+                // 매 프레임마다 무작위 회전 동작을 적용하여 주사위의 면들을 변경함  
                 int move = rand.Next(0, 6);
                 switch (move)
                 {
@@ -63,23 +60,25 @@ namespace RogueLikeRpg
                         break;
                 }
 
-                // 현재 주사위 상태(윗면, 앞면, 오른쪽면)를 ASCII 아트로 생성합니다.
+                // 주사위의 현재 상태(윗면, 앞면, 오른쪽면)를 ASCII 아트로 생성
                 string[] diceArt = GetCubeFrame(dice.Top, dice.Front, dice.Right);
 
-                // 계산된 (currentX, currentY) 좌표에 주사위 출력
+                // 계산된 좌표에 ASCII 아트를 출력
                 DrawCubeAtPosition(diceArt, currentX, currentY);
+
+                // 스페이스바 입력 시 애니메이션 스킵
                 if (Console.KeyAvailable)
                 {
                     var key = Console.ReadKey(true);
                     if (key.Key == ConsoleKey.Spacebar)
                     {
-                        break; // 애니메이션 루프 종료
+                        break;
                     }
                 }
                 Thread.Sleep(delay);
             }
 
-            // 애니메이션 종료 후 최종 주사위의 윗면 값을 이용하여 배율 결정
+            // 애니메이션 종료 후 최종 윗면을 기준으로 배율 결정
             int finalDiceFace = dice.Top;
             double multiplier = 1.0;
             switch (finalDiceFace)
@@ -114,7 +113,7 @@ namespace RogueLikeRpg
             return finalAttack;
         }
 
-        // 주사위의 3면(윗면, 앞면, 오른쪽면)을 ASCII 아트로 생성하는 메서드
+        // 주사위의 3면(윗면, 앞면, 오른쪽면)을 ASCII 아트 문자열 배열로 생성
         private static string[] GetCubeFrame(int top, int front, int right)
         {
             return new string[]
@@ -130,7 +129,7 @@ namespace RogueLikeRpg
             };
         }
 
-        // 지정된 (x, y) 좌표에서부터 ASCII 아트를 출력하는 메서드
+        // 지정한 (x, y) 좌표에 ASCII 아트를 출력하는 메서드
         private static void DrawCubeAtPosition(string[] art, int x, int y)
         {
             for (int i = 0; i < art.Length; i++)

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace RogueLikeRpg
 {
@@ -22,7 +23,7 @@ namespace RogueLikeRpg
             Console.WriteLine("*                                                  *");
             Console.WriteLine("* ■■■    ■■■   ■    ■   ■■■   ■■■■  *");
             Console.WriteLine("* ■   ■  ■    ■  ■    ■  ■        ■        *");
-            Console.WriteLine("* ■■■   ■    ■  ■    ■  ■■■■  ■■■■  *");
+            Console.WriteLine("* ■■■   ■    ■  ■    ■  ■■■■  ■■■■ *");
             Console.WriteLine("* ■  ■   ■    ■  ■    ■  ■    ■  ■        *");
             Console.WriteLine("* ■   ■   ■■■   ■■■■   ■■■   ■■■■  *");
             Console.WriteLine("*                                                  *");
@@ -41,7 +42,7 @@ namespace RogueLikeRpg
             DungeonManager dungeonManager = new DungeonManager();
             MonsterManager monsterManager = new MonsterManager();
             ItemManager itemManager = new ItemManager();
-           
+
             GameLoop(player, dungeonManager, monsterManager, itemManager);
         }
 
@@ -50,7 +51,7 @@ namespace RogueLikeRpg
             Console.Clear();
             Console.WriteLine("****************************************************");
             Console.WriteLine("*                                                  *");
-            Console.WriteLine("* ■■■    ■■■   ■    ■   ■■■   ■■■■  *");
+            Console.WriteLine("* ■■■    ■■■   ■    ■   ■■■   ■■■■  *"); 
             Console.WriteLine("* ■   ■  ■    ■  ■    ■  ■        ■        *");
             Console.WriteLine("* ■■■   ■    ■  ■    ■  ■■■■  ■■■■  *");
             Console.WriteLine("* ■  ■   ■    ■  ■    ■  ■    ■  ■        *");
@@ -81,8 +82,34 @@ namespace RogueLikeRpg
             }
         }
 
+        public void GameOver()
+        {
+            PrintGameOverScreen();
+            Console.ReadLine();
+        }
+
+        private void PrintGameOverScreen()
+        {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Red; 
+            Console.WriteLine("****************************************************");
+            Console.WriteLine("*                                                  *");
+            Console.WriteLine("*    ■■■      ■       ■    ■   ■■■■      *");
+            Console.WriteLine("*   ■          ■■      ■■■■   ■            *");
+            Console.WriteLine("*   ■ ■■■  ■  ■     ■ ▼ ■   ■■■■      *");
+            Console.WriteLine("*   ■    ■  ■ ■ ■    ■    ■   ■            *");
+            Console.WriteLine("*    ■■■  ■      ■   ■    ■   ■■■■      *");
+            Console.WriteLine("*                                                  *");
+            Console.WriteLine("****************************************************");
+            Console.WriteLine("                        OVER");
+            Console.WriteLine("****************************************************");
+
+
+            Console.ResetColor(); 
+        }
+
         private void GameLoop(PlayerType player, DungeonManager dungeonManager,
-                            MonsterManager monsterManager, ItemManager itemManager  )
+                            MonsterManager monsterManager, ItemManager itemManager)
         {
             Console.Clear();
             Random random = new Random();
@@ -91,7 +118,7 @@ namespace RogueLikeRpg
             {
                 Console.SetCursorPosition(0, 0);
                 player.RenderMap(dungeonManager.CurrentDungeon); // 플레이어 시야 제한 적용하여 맵 출력
-                player.CreatePlayer();
+                player.CreatePlayer(dungeonManager);
 
                 Console.WriteLine("이동: W(↑) A(←) S(↓) D(→) / >: 내려가기 / <: 올라가기");
                 char input = char.ToLower(Console.ReadKey().KeyChar);
@@ -133,14 +160,21 @@ namespace RogueLikeRpg
                     dungeonManager.CheckCurrentFloor(player, itemManager);
 
                     // 5% 확률로 몬스터 전투 시작
-                    if (random.Next(100) < 0)
+                    if (random.Next(100) < 5)
                     {
                         Console.Clear();
                         monsterManager.SpawnMonster(player);
                     }
                 }
+                if (player.Hp <= 0)
+                {
+                    Console.Clear();
+                    GameManager gameManager = new GameManager();
+                    gameManager.GameOver(); // 게임 오버 화면 출력
+                    break; // `while` 루프 탈출 (게임 종료)
+                }
             }
         }
-
     }
+
 }
