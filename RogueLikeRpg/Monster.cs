@@ -69,7 +69,7 @@ namespace RogueLikeRpg
             Console.WriteLine($"{Name}이(가) 강력한 공격을 시도합니다! (공격력: {Att})");
             int totalDamage = Att;
 
-            if (rand.Next(0, 4) == 0)
+            if (rand.Next(0, 3) == 0)
             {
                 Console.WriteLine($"{Name}이(가) 연속 공격을 사용합니다! (공격력: {Att})");
                 totalDamage += Att;
@@ -104,7 +104,6 @@ namespace RogueLikeRpg
         public void SpawnMonster(Player player, int currentFloor)
         {
             Monster baseMonster = GetRandomMonster();
-            // 배율 계산: 현재 층이 1층일 때 1.0, 이후 매 층마다 HP, 공격력 10%씩 증가
             double hpMultiplier = 1.0 + (currentFloor - 1) * Hp_Increase;
             double attMultiplier = 1.0 + (currentFloor - 1) * Att_Increase;
 

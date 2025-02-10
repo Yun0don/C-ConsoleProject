@@ -51,7 +51,6 @@ namespace RogueLikeRpg
                 BossTurn();
                 Console.ReadKey();
                 Console.Clear();
-
             }
             EndBossBattle();
         }
@@ -147,12 +146,13 @@ namespace RogueLikeRpg
             if (player.Hp > 0 && boss.HasValue && boss.Value.Hp <= 0)
             {
                 Console.WriteLine($"\n{boss.Value.Name}을(를) 쓰러뜨렸다!");
-                Console.WriteLine("던전을 정복했습니다!");
                 GameManager.Instance.GameClear();
+                return;
             }
             else if (player.Hp <= 0)
             {
-                Console.WriteLine("\n플레이어가 쓰러졌습니다. 게임 오버!");
+                GameManager.Instance.GameOver();
+                return;
             }
             Console.WriteLine("\n탐험을 재개합니다. 아무 키나 누르세요...");
             Console.ReadKey();

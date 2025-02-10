@@ -5,7 +5,7 @@ namespace RogueLikeRpg
 {
     public class DungeonManager
     {
-        private const int MaxFloor = 20;
+        private const int MaxFloor = 2;
         private Stack<Dungeon> dungeonStack = new Stack<Dungeon>();
 
         public DungeonManager()
@@ -49,9 +49,6 @@ namespace RogueLikeRpg
             {
                 if (dungeonStack.Count == MaxFloor - 1)
                 {
-                    Console.WriteLine("드디어 마지막 층에 도착.... ");
-                    Console.WriteLine("보스가 나타났다!");
-
                     MonsterManager monsterManager = new MonsterManager();
                     monsterManager.SpawnBoss(player);
                 }

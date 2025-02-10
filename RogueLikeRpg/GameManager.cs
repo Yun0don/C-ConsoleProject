@@ -90,9 +90,23 @@ namespace RogueLikeRpg
         public void GameClear()
         {
             Console.Clear();
-            Console.WriteLine("축하합니다! 던전을 정복했습니다! ");
-            Console.WriteLine("던전의 보스를 쓰러뜨리고, 전설적인 모험가가 되었습니다.");
-            PrintGameOverScreen();
+            Console.WriteLine("****************************************************");
+            Console.WriteLine("*                                                  *");
+            Console.WriteLine("* ■■■    ■■■   ■    ■   ■■■   ■■■■  *");
+            Console.WriteLine("* ■   ■  ■    ■  ■    ■  ■        ■        *");
+            Console.WriteLine("* ■■■   ■    ■  ■    ■  ■■■■  ■■■■ *");
+            Console.WriteLine("* ■  ■   ■    ■  ■    ■  ■    ■  ■        *");
+            Console.WriteLine("* ■   ■   ■■■   ■■■■   ■■■   ■■■■  *");
+            Console.WriteLine("*                                                  *");
+            Console.WriteLine("****************************************************");
+            Console.WriteLine("*                G A M E C L E A R                 *");
+            Console.WriteLine("****************************************************");
+            Console.WriteLine("*                                                  *");
+            Console.WriteLine("*              PRESS ANY KEY TO EXIT...            *");
+            Console.WriteLine("*                                                  *");
+            Console.WriteLine("****************************************************");
+            Console.ReadKey();
+
             Environment.Exit(0); 
         }
 
@@ -168,7 +182,7 @@ namespace RogueLikeRpg
                     dungeonManager.CheckCurrentFloor(player, itemManager);
 
                     // 5% 확률로 몬스터 전투 시작
-                    if (random.Next(100) < 5)
+                    if (random.Next(100) < 4)
                     {
                         Console.Clear();
                         monsterManager.SpawnMonster(player,dungeonManager.GetCurrentFloor());
