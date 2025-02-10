@@ -87,6 +87,14 @@ namespace RogueLikeRpg
             PrintGameOverScreen();
             Console.ReadLine();
         }
+        public void GameClear()
+        {
+            Console.Clear();
+            Console.WriteLine("축하합니다! 던전을 정복했습니다! ");
+            Console.WriteLine("던전의 보스를 쓰러뜨리고, 전설적인 모험가가 되었습니다.");
+            PrintGameOverScreen();
+            Environment.Exit(0); 
+        }
 
         private void PrintGameOverScreen()
         {

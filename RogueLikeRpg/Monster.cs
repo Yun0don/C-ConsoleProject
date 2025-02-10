@@ -7,26 +7,24 @@ namespace RogueLikeRpg
     {
         public string Name { get; }
         public int Hp { get; set; }
-
-        public int MaxHp { get; set; }
+        public int MaxHp { get; }
         public int Att { get; }
+        public char Type { get; }
 
-        public char Type;
-
-        public Monster(string name, int hp, int maxhp ,int attack, char type)
+        public Monster(string name, int hp, int maxhp, int attack, char type)
         {
             Name = name;
             Hp = hp;
+            MaxHp = maxhp;
             Att = attack;
             Type = type;
-            MaxHp = maxhp;
         }
 
         public void TakeDamage(int damage)
         {
-            // 주사위의 값을 반환해서 데미지를 결정하고 피해를 입힘.
             Hp -= damage;
-            Console.WriteLine($"{Name}이(가) {damage}의 피해를 입었습니다!");
+            if (Hp < 0) Hp = 0; // 체력 최소값 보장
+            Console.WriteLine($"{Name}이(가) {damage}의 피해를 입었습니다! (남은 체력: {Hp}/{MaxHp})");
         }
 
         public int DealDamage()
@@ -35,41 +33,88 @@ namespace RogueLikeRpg
             return Att;
         }
     }
+
+    public struct Boss
+    {
+        public string Name { get; }
+        public int Hp { get; set; }
+        public int MaxHp { get; }
+        public int Att { get; }
+
+        private static Random rand = new Random();
+
+        public Boss(string name, int hp, int maxhp, int attack)
+        {
+            Name = name;
+            Hp = hp;
+            MaxHp = maxhp;
+            Att = attack;
+        }
+
+        public void TakeDamage(ref Boss boss, int damage)
+        {
+            Hp -= damage;
+            if (boss.Hp < 0) Hp = 0;
+            Console.WriteLine($"{boss.Name}이(가) {damage}의 피해를 입었습니다! (남은 체력: {boss.Hp}/{boss.MaxHp})");
+        }
+
+        public int DealDamage()
+        {
+            if (Hp <= 0)
+            {
+                Console.WriteLine($"{Name}은(는) 이미 쓰러졌다.");
+                return 0;
+            }
+
+            Console.WriteLine($"{Name}이(가) 강력한 공격을 시도합니다! (공격력: {Att})");
+            int totalDamage = Att;
+
+            if (rand.Next(0, 4) == 0)
+            {
+                Console.WriteLine($"{Name}이(가) 연속 공격을 사용합니다! (공격력: {Att})");
+                totalDamage += Att;
+            }
+
+            return totalDamage;
+        }
+    }
+
     public class MonsterManager
     {
-            private List<Monster> monsters = new List<Monster>();
-            private Random random = new Random();
+        private List<Monster> monsters = new List<Monster>();
+        private Random random = new Random();
+        private Boss finalBoss;
 
-            public MonsterManager()
-            {
-                // 몬스터 초기 생성
-                monsters.Add(new Monster("슬라임", 20, 20, 5, '~'));  
-                monsters.Add(new Monster("고블린", 30, 30, 8, '='));
-                monsters.Add(new Monster("오크", 50, 50, 12, 'ㅁ' ));
-                monsters.Add(new Monster("늑대", 35, 35, 10, 'X'));
-            }
+        public MonsterManager()
+        {
+            // 일반 몬스터 초기 설정
+            monsters.Add(new Monster("슬라임", 20, 20, 5, '~'));
+            monsters.Add(new Monster("고블린", 30, 30, 8, '='));
+            monsters.Add(new Monster("오크", 50, 50, 12, 'ㅁ'));
+            monsters.Add(new Monster("늑대", 35, 35, 10, 'X'));
 
-            public Monster GetRandomMonster()
-            {
-                int index = random.Next(monsters.Count);
-                return monsters[index];
-            }
+            // 최종 보스 설정
+            finalBoss = new Boss("자쿰", 1000, 1000, 50);
+        }
 
-            public void SpawnMonster(Player player)
-            {
-                Monster monster = GetRandomMonster();
-                Battle battle = new Battle(player, monster);
-                battle.StartBattle();
-            }
-            ///  나중에 DungeonManager 생성하고 밸런싱할때 생각해보자.
-            //   public void TryEncounterMonster()
-            //   {
-            //       int chance = random.Next(100);
-            //       if (chance < 20)
-            //       {
-            //       SpawnMonster();
-            //       Console.ReadKey();
-            //       }
-            //   }
+        /// 일반 몬스터 랜덤 생성 및 전투 시작
+        public void SpawnMonster(Player player)
+        {
+            Monster monster = GetRandomMonster();
+            Battle battle = new Battle(player, monster);
+            battle.StartBattle();
+        }
+
+        public void SpawnBoss(Player player)
+        {
+            Battle battle = new Battle(player, finalBoss);
+            battle.StartBossBattle();
+        }
+
+        private Monster GetRandomMonster()
+        {
+            int index = random.Next(monsters.Count);
+            return monsters[index];
+        }
     }
 }

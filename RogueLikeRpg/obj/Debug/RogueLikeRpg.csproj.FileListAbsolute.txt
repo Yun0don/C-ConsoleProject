@@ -26,3 +26,10 @@ C:\Users\soyuh\Desktop\KGA\Project\RoguelikeRpg - 시야구현\C-ConsoleProject\
 C:\Users\soyuh\Desktop\KGA\Project\RoguelikeRpg - 시야구현\C-ConsoleProject\RogueLikeRpg\obj\Debug\RogueLikeRpg.csproj.CoreCompileInputs.cache
 C:\Users\soyuh\Desktop\KGA\Project\RoguelikeRpg - 시야구현\C-ConsoleProject\RogueLikeRpg\obj\Debug\RogueLikeRpg.exe
 C:\Users\soyuh\Desktop\KGA\Project\RoguelikeRpg - 시야구현\C-ConsoleProject\RogueLikeRpg\obj\Debug\RogueLikeRpg.pdb
+C:\Users\soyuh\Desktop\KGA\Project\RoguelikeRpg 제일최신\C-ConsoleProject\RogueLikeRpg\bin\Debug\RogueLikeRpg.exe.config
+C:\Users\soyuh\Desktop\KGA\Project\RoguelikeRpg 제일최신\C-ConsoleProject\RogueLikeRpg\bin\Debug\RogueLikeRpg.exe
+C:\Users\soyuh\Desktop\KGA\Project\RoguelikeRpg 제일최신\C-ConsoleProject\RogueLikeRpg\bin\Debug\RogueLikeRpg.pdb
+C:\Users\soyuh\Desktop\KGA\Project\RoguelikeRpg 제일최신\C-ConsoleProject\RogueLikeRpg\obj\Debug\RogueLikeRpg.csproj.AssemblyReference.cache
+C:\Users\soyuh\Desktop\KGA\Project\RoguelikeRpg 제일최신\C-ConsoleProject\RogueLikeRpg\obj\Debug\RogueLikeRpg.csproj.CoreCompileInputs.cache
+C:\Users\soyuh\Desktop\KGA\Project\RoguelikeRpg 제일최신\C-ConsoleProject\RogueLikeRpg\obj\Debug\RogueLikeRpg.exe
+C:\Users\soyuh\Desktop\KGA\Project\RoguelikeRpg 제일최신\C-ConsoleProject\RogueLikeRpg\obj\Debug\RogueLikeRpg.pdb
