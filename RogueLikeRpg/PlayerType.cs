@@ -27,10 +27,11 @@ namespace RogueLikeRpg
             // 각 직업별로 초기 스탯 및 시작 아이템/인벤토리 설정
             if (playerClass == PlayerClass.Warrior)
             {
-                MaxHp = 150;  // 전사는 높은 체력
+                MaxHp = 250;  // 전사는 높은 체력
                 Hp = MaxHp;
-                Att = 10;
+                Att = 15;
                 // 전사는 "덤불조끼"를 시작 아이템으로 들고 생성
+                Inventory.Add(new Item("덤불조끼", ItemType.Armor, 15));
                 Inventory.Add(new Item("덤불조끼", ItemType.Armor, 15));
                 Inventory.Add(new Item("하이랜더", ItemType.Weapon, 10));
             }
@@ -43,12 +44,15 @@ namespace RogueLikeRpg
             }
             else if (playerClass == PlayerClass.Mage)
             {
-                MaxHp = 100;  // 마법사는 보통 체력
+                MaxHp = 150;  // 마법사는 보통 체력
                 Hp = MaxHp;
-                Att = 15;     // 예시로 공격력을 15로 설정
+                Att = 20;     // 예시로 공격력을 15로 설정
                 // 마법사는 포션 3종류(빨간포션, 주황포션, 하얀포션)를 모두 인벤토리에 추가
                 Inventory.Add(new Item("빨간포션", ItemType.Potion, 5));
+                Inventory.Add(new Item("빨간포션", ItemType.Potion, 5));
                 Inventory.Add(new Item("주황포션", ItemType.Potion, 10));
+                Inventory.Add(new Item("주황포션", ItemType.Potion, 10));
+                Inventory.Add(new Item("하얀포션", ItemType.Potion, 20));
                 Inventory.Add(new Item("하얀포션", ItemType.Potion, 20));
             }
         }

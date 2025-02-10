@@ -5,7 +5,7 @@ namespace RogueLikeRpg
 {
     public class DungeonManager
     {
-        private const int MaxFloor = 2;
+        private const int MaxFloor = 20;
         private Stack<Dungeon> dungeonStack = new Stack<Dungeon>();
 
         public DungeonManager()

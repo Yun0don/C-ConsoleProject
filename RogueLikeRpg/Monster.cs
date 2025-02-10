@@ -85,8 +85,8 @@ namespace RogueLikeRpg
         private Random random = new Random();
         private Boss finalBoss;
 
-        private const double Hp_Increase = 0.1;
-        private const double Att_Increase = 0.1;
+        private const double Hp_Increase = 0.5;
+        private const double Att_Increase = 0.2;
 
         public MonsterManager()
         {

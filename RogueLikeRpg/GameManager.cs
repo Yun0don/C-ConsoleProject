@@ -182,7 +182,7 @@ namespace RogueLikeRpg
                     dungeonManager.CheckCurrentFloor(player, itemManager);
 
                     // 5% 확률로 몬스터 전투 시작
-                    if (random.Next(100) < 4)
+                    if (random.Next(100) < 2)
                     {
                         Console.Clear();
                         monsterManager.SpawnMonster(player,dungeonManager.GetCurrentFloor());
