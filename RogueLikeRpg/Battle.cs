@@ -73,7 +73,7 @@ namespace RogueLikeRpg
         private void PlayerTurn()
         {
             Console.WriteLine("[플레이어 턴]");
-            Console.WriteLine("1. 공격  2. 아이템사용");
+            Console.WriteLine("1. 공격");
             Console.Write("선택: ");
             char choice = Console.ReadKey().KeyChar;
             Console.WriteLine();

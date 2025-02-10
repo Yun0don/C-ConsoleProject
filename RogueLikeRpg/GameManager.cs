@@ -171,7 +171,7 @@ namespace RogueLikeRpg
                     if (random.Next(100) < 5)
                     {
                         Console.Clear();
-                        monsterManager.SpawnMonster(player);
+                        monsterManager.SpawnMonster(player,dungeonManager.GetCurrentFloor());
                     }
                 }
                 if (player.Hp <= 0)

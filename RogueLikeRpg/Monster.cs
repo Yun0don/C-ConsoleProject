@@ -85,6 +85,9 @@ namespace RogueLikeRpg
         private Random random = new Random();
         private Boss finalBoss;
 
+        private const double Hp_Increase = 0.1;
+        private const double Att_Increase = 0.1;
+
         public MonsterManager()
         {
             // 일반 몬스터 초기 설정
@@ -98,10 +101,23 @@ namespace RogueLikeRpg
         }
 
         /// 일반 몬스터 랜덤 생성 및 전투 시작
-        public void SpawnMonster(Player player)
+        public void SpawnMonster(Player player, int currentFloor)
         {
-            Monster monster = GetRandomMonster();
-            Battle battle = new Battle(player, monster);
+            Monster baseMonster = GetRandomMonster();
+            // 배율 계산: 현재 층이 1층일 때 1.0, 이후 매 층마다 HP, 공격력 10%씩 증가
+            double hpMultiplier = 1.0 + (currentFloor - 1) * Hp_Increase;
+            double attMultiplier = 1.0 + (currentFloor - 1) * Att_Increase;
+
+            Monster scaledMonster = new Monster(
+                baseMonster.Name,
+                (int)(baseMonster.Hp * hpMultiplier),
+                (int)(baseMonster.MaxHp * hpMultiplier),
+                (int)(baseMonster.Att * attMultiplier),
+                baseMonster.Type
+            );
+
+            Console.WriteLine($"{scaledMonster.Name}이(가) 나타났다! 전투 시작!");
+            Battle battle = new Battle(player, scaledMonster);
             battle.StartBattle();
         }
 
