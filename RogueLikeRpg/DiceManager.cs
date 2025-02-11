@@ -10,9 +10,14 @@ namespace RogueLikeRpg
         {
             int roll = random.Next(100);
 
-            if (roll < 5) // 5
+
+            if (roll < 4) // 4
             {
                 return new Dice("너가 멸망되는 주사위", new int[] { 1, 1, 1, 1, 1, 1 });
+            }
+            else if (roll <5) // 1
+            {
+                return new Dice("마법사의 주사위", new int[] { 3, 3, 4, 4, 5, 6 });
             }
             else if (roll < 10) // 5
             {
@@ -33,7 +38,7 @@ namespace RogueLikeRpg
             else if (roll < 45) // 10
             {
                 return new Dice("모와 도의 주사위", new int[] { 1, 6, 1, 6, 1, 6 });
-            } 
+            }
             else if (roll < 50) //5
             {
                 return new Dice("삼위일체의 주사위", new int[] { 1, 3, 5, 1, 3, 5 });
@@ -58,7 +63,7 @@ namespace RogueLikeRpg
             {
                 return new Dice("신의 주사위", new int[] { 5, 5, 5, 6, 6, 6 });
             }
-            else // 1
+            else  // 1
             {
                 return new Dice("엔딩보는 주사위", new int[] { 6, 6, 6, 6, 6, 6 });
             }

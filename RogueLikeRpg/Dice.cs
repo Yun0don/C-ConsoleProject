@@ -26,6 +26,7 @@ namespace RogueLikeRpg
         public Dice(string name, int[] faces)
         {
             if (faces.Length != 6)
+                throw new ArgumentException("Faces 배열은 6개의 숫자를 포함해야 합니다.");
             Name = name;
             Top = faces[0];
             Bottom = faces[1];

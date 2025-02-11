@@ -53,7 +53,7 @@ namespace RogueLikeRpg
                 Inventory.Add(new Item("빨간포션", ItemType.Potion, 25));
                 Inventory.Add(new Item("주황포션", ItemType.Potion, 50));
                 Inventory.Add(new Item("주황포션", ItemType.Potion, 50));
-                Inventory.Add(new Item("하얀포션", ItemType.Potion, 100));
+                Inventory.Add(new Item("하얀포션", ItemType.Potion, 100)); 
                 Inventory.Add(new Item("하얀포션", ItemType.Potion, 100));
                 Dice = new Dice("마법사의 주사위", new int[] { 3, 3, 4, 4, 5, 6, });
             }
