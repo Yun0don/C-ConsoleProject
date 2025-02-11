@@ -12,7 +12,7 @@ namespace RogueLikeRpg
         public int MaxExp { get; protected set; }
         public int Level { get; protected set; }
         // 템 및 주사위 관리
-        public Dice Dice { get; private set; }
+        public Dice Dice { get; protected set; }
         public List<Item> Inventory { get; private set; }
         public bool IsInventoryOpen = false;
         private int selectedItemIndex = 0;
@@ -43,7 +43,7 @@ namespace RogueLikeRpg
             Console.WriteLine("=====================================");
             Console.WriteLine($"        인벤토리 열기 => (i) ");
             Console.WriteLine("=====================================");
-            Console.WriteLine($"        현재 던전 => {dungeonManager.GetCurrentFloor()}층");
+            Console.WriteLine($"        현재 던전 => 지하 {dungeonManager.GetCurrentFloor()}층");
             Console.WriteLine("=====================================");
         }
 
@@ -207,16 +207,6 @@ namespace RogueLikeRpg
         {
             return Att;
         }
-
-
-
-
-
-
-
-
-
-
     }
 }
 

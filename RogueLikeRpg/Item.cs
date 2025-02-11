@@ -32,15 +32,15 @@ namespace RogueLikeRpg
         {
             ItemList = new Dictionary<string, Item>
             {
-                { "빨간포션", new Item("빨간포션", ItemType.Potion, 5) },
-                { "주황포션", new Item("주황포션", ItemType.Potion, 10) },
-                { "하얀포션", new Item("하얀포션", ItemType.Potion, 20) },
-                { "몽둥이", new Item("몽둥이", ItemType.Weapon, 3) },
-                { "철검", new Item("철검", ItemType.Weapon, 6) },
-                { "하이랜더", new Item("하이랜더", ItemType.Weapon, 10) },
+                { "빨간포션", new Item("빨간포션", ItemType.Potion, 25) },
+                { "주황포션", new Item("주황포션", ItemType.Potion, 50) },
+                { "하얀포션", new Item("하얀포션", ItemType.Potion, 100) },
+                { "몽둥이", new Item("몽둥이", ItemType.Weapon, 5) },
+                { "철검", new Item("철검", ItemType.Weapon, 10) },
+                { "하이랜더", new Item("하이랜더", ItemType.Weapon, 20) },
                 { "천갑옷", new Item("천갑옷", ItemType.Armor, 5) },
                 { "철갑옷", new Item("철갑옷", ItemType.Armor, 10) },
-                { "덤불조끼", new Item("덤불조끼", ItemType.Armor, 15) }
+                { "덤불조끼", new Item("덤불조끼", ItemType.Armor, 20) }
             };
         }
 

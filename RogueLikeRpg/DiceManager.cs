@@ -8,7 +8,7 @@ namespace RogueLikeRpg
 
         public static Dice GetRandomDice()
         {
-            int roll = random.Next(100); // 0 ~ 99 사이의 값
+            int roll = random.Next(100);
 
             if (roll < 5) // 5
             {

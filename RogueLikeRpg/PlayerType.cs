@@ -29,17 +29,18 @@ namespace RogueLikeRpg
             {
                 MaxHp = 250;  // 전사는 높은 체력
                 Hp = MaxHp;
-                Att = 15;
+                Att = 10;
                 // 전사는 "덤불조끼"를 시작 아이템으로 들고 생성
-                Inventory.Add(new Item("덤불조끼", ItemType.Armor, 15));
-                Inventory.Add(new Item("덤불조끼", ItemType.Armor, 15));
-                Inventory.Add(new Item("하이랜더", ItemType.Weapon, 10));
+                Inventory.Add(new Item("덤불조끼", ItemType.Armor, 20));
+                Inventory.Add(new Item("덤불조끼", ItemType.Armor, 20));
+                Inventory.Add(new Item("하이랜더", ItemType.Weapon, 20));
+                Inventory.Add(new Item("하이랜더", ItemType.Weapon, 20));
             }
             else if (playerClass == PlayerClass.Thief)
             {
                 MaxHp = 50;   // 도적은 낮은 체력, 높은 공격력
                 Hp = MaxHp;
-                Att = 30;
+                Att = 30; // 30*2
                 // 도적은 추가적인 공격력 효과는 Attack()에서 처리 (50% 확률로 두 번 공격)
             }
             else if (playerClass == PlayerClass.Mage)
@@ -48,12 +49,13 @@ namespace RogueLikeRpg
                 Hp = MaxHp;
                 Att = 20;     // 예시로 공격력을 15로 설정
                 // 마법사는 포션 3종류(빨간포션, 주황포션, 하얀포션)를 모두 인벤토리에 추가
-                Inventory.Add(new Item("빨간포션", ItemType.Potion, 5));
-                Inventory.Add(new Item("빨간포션", ItemType.Potion, 5));
-                Inventory.Add(new Item("주황포션", ItemType.Potion, 10));
-                Inventory.Add(new Item("주황포션", ItemType.Potion, 10));
-                Inventory.Add(new Item("하얀포션", ItemType.Potion, 20));
-                Inventory.Add(new Item("하얀포션", ItemType.Potion, 20));
+                Inventory.Add(new Item("빨간포션", ItemType.Potion, 25));
+                Inventory.Add(new Item("빨간포션", ItemType.Potion, 25));
+                Inventory.Add(new Item("주황포션", ItemType.Potion, 50));
+                Inventory.Add(new Item("주황포션", ItemType.Potion, 50));
+                Inventory.Add(new Item("하얀포션", ItemType.Potion, 100));
+                Inventory.Add(new Item("하얀포션", ItemType.Potion, 100));
+                Dice = new Dice("마법사의 주사위", new int[] { 3, 3, 4, 4, 5, 6, });
             }
         }
 

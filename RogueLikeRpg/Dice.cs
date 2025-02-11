@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Threading;
 
 namespace RogueLikeRpg
 {
@@ -18,8 +13,6 @@ namespace RogueLikeRpg
 
         public string Name { get; private set; }
 
-
-        // 기본 주사위 배치: 윗면:1, 아랫면:6, 앞면:2, 뒷면:5, 오른쪽면:3, 왼쪽면:4
         public Dice(string name)
         {
             Name = name;
@@ -33,7 +26,6 @@ namespace RogueLikeRpg
         public Dice(string name, int[] faces)
         {
             if (faces.Length != 6)
-                throw new ArgumentException("Faces 배열은 6개의 숫자를 포함해야 합니다.");
             Name = name;
             Top = faces[0];
             Bottom = faces[1];

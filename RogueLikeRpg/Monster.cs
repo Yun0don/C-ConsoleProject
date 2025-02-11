@@ -69,7 +69,7 @@ namespace RogueLikeRpg
             Console.WriteLine($"{Name}이(가) 강력한 공격을 시도합니다! (공격력: {Att})");
             int totalDamage = Att;
 
-            if (rand.Next(0, 3) == 0)
+            if (rand.Next(0, 4) == 0) // 25퍼확률로 연속공격 
             {
                 Console.WriteLine($"{Name}이(가) 연속 공격을 사용합니다! (공격력: {Att})");
                 totalDamage += Att;
