@@ -21,12 +21,13 @@ namespace RogueLikeRpg
         {
             Console.WriteLine("****************************************************");
             Console.WriteLine("*                                                  *");
-            Console.WriteLine("* ■■■    ■■■   ■    ■   ■■■   ■■■■  *");
-            Console.WriteLine("* ■   ■  ■    ■  ■    ■  ■        ■        *");
-            Console.WriteLine("* ■■■   ■    ■  ■    ■  ■■■■  ■■■■ *");
-            Console.WriteLine("* ■  ■   ■    ■  ■    ■  ■    ■  ■        *");
-            Console.WriteLine("* ■   ■   ■■■   ■■■■   ■■■   ■■■■  *");
-            Console.WriteLine("*                                                  *");
+            Console.WriteLine("*   ■■■■■     ■■■       ■■■    ■     ■  ■■■■■■     *");
+            Console.WriteLine("*   ■    ■   ■   ■     ■   ■   ■     ■  ■          *");
+            Console.WriteLine("*   ■    ■  ■     ■   ■        ■     ■  ■          *");
+            Console.WriteLine("*   ■■■■■   ■     ■   ■  ■■■   ■     ■  ■■■■■      *");
+            Console.WriteLine("*   ■  ■    ■     ■   ■     ■  ■     ■  ■          *");
+            Console.WriteLine("*   ■   ■    ■   ■     ■   ■    ■   ■   ■          *");
+            Console.WriteLine("*   ■    ■    ■■■       ■■■      ■■■    ■■■■■■     *");
             Console.WriteLine("****************************************************");
             Console.WriteLine("*                G A M E   S T A R T               *");
             Console.WriteLine("****************************************************");
@@ -51,12 +52,13 @@ namespace RogueLikeRpg
             Console.Clear();
             Console.WriteLine("****************************************************");
             Console.WriteLine("*                                                  *");
-            Console.WriteLine("* ■■■    ■■■   ■    ■   ■■■   ■■■■  *"); 
-            Console.WriteLine("* ■   ■  ■    ■  ■    ■  ■        ■        *");
-            Console.WriteLine("* ■■■   ■    ■  ■    ■  ■■■■  ■■■■  *");
-            Console.WriteLine("* ■  ■   ■    ■  ■    ■  ■    ■  ■        *");
-            Console.WriteLine("* ■   ■   ■■■   ■■■■   ■■■   ■■■■  *");
-            Console.WriteLine("*                                                  *");
+            Console.WriteLine("*   ■■■■■     ■■■       ■■■    ■     ■  ■■■■■■     *");
+            Console.WriteLine("*   ■    ■   ■   ■     ■   ■   ■     ■  ■          *");
+            Console.WriteLine("*   ■    ■  ■     ■   ■        ■     ■  ■          *");
+            Console.WriteLine("*   ■■■■■   ■     ■   ■  ■■■   ■     ■  ■■■■■      *");
+            Console.WriteLine("*   ■  ■    ■     ■   ■     ■  ■     ■  ■          *");
+            Console.WriteLine("*   ■   ■    ■   ■     ■   ■    ■   ■   ■          *");
+            Console.WriteLine("*   ■    ■    ■■■       ■■■      ■■■    ■■■■■■     *");
             Console.WriteLine("****************************************************");
             Console.WriteLine("*                직업을 선택하세요                 *");
             Console.WriteLine("****************************************************");
@@ -92,12 +94,13 @@ namespace RogueLikeRpg
             Console.Clear();
             Console.WriteLine("****************************************************");
             Console.WriteLine("*                                                  *");
-            Console.WriteLine("* ■■■    ■■■   ■    ■   ■■■   ■■■■  *");
-            Console.WriteLine("* ■   ■  ■    ■  ■    ■  ■        ■        *");
-            Console.WriteLine("* ■■■   ■    ■  ■    ■  ■■■■  ■■■■ *");
-            Console.WriteLine("* ■  ■   ■    ■  ■    ■  ■    ■  ■        *");
-            Console.WriteLine("* ■   ■   ■■■   ■■■■   ■■■   ■■■■  *");
-            Console.WriteLine("*                                                  *");
+            Console.WriteLine("*   ■■■■■     ■■■       ■■■    ■     ■  ■■■■■■     *");
+            Console.WriteLine("*   ■    ■   ■   ■     ■   ■   ■     ■  ■          *");
+            Console.WriteLine("*   ■    ■  ■     ■   ■        ■     ■  ■          *");
+            Console.WriteLine("*   ■■■■■   ■     ■   ■  ■■■   ■     ■  ■■■■■      *");
+            Console.WriteLine("*   ■  ■    ■     ■   ■     ■  ■     ■  ■          *");
+            Console.WriteLine("*   ■   ■    ■   ■     ■   ■    ■   ■   ■          *");
+            Console.WriteLine("*   ■    ■    ■■■       ■■■      ■■■    ■■■■■■     *");
             Console.WriteLine("****************************************************");
             Console.WriteLine("*                G A M E C L E A R                 *");
             Console.WriteLine("****************************************************");
@@ -106,28 +109,25 @@ namespace RogueLikeRpg
             Console.WriteLine("*                                                  *");
             Console.WriteLine("****************************************************");
             Console.ReadKey();
-
             Environment.Exit(0); 
         }
 
         private void PrintGameOverScreen()
         {
             Console.Clear();
-            Console.ForegroundColor = ConsoleColor.Red; 
-            Console.WriteLine("****************************************************");
-            Console.WriteLine("*                                                  *");
-            Console.WriteLine("*    ■■■      ■       ■    ■   ■■■■      *");
-            Console.WriteLine("*   ■          ■■      ■■■■   ■            *");
-            Console.WriteLine("*   ■ ■■■  ■  ■     ■ ▼ ■   ■■■■      *");
-            Console.WriteLine("*   ■    ■  ■ ■ ■    ■    ■   ■            *");
-            Console.WriteLine("*    ■■■  ■      ■   ■    ■   ■■■■      *");
-            Console.WriteLine("*                                                  *");
-            Console.WriteLine("****************************************************");
-            Console.WriteLine("                        OVER");
-            Console.WriteLine("****************************************************");
-
-
-            Console.ResetColor(); 
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("**********************************************************************");
+            Console.WriteLine("*                                                                    *");
+            Console.WriteLine("*   ■■■     ■■■    ■     ■  ■■■■■■   ■■■    ■     ■  ■■■■■■  ■■■■■   *");
+            Console.WriteLine("*  ■   ■   ■   ■   ■■   ■■  ■       ■   ■   ■     ■  ■       ■    ■  *");
+            Console.WriteLine("* ■       ■     ■  ■ ■ ■ ■  ■      ■     ■  ■     ■  ■       ■    ■  *");
+            Console.WriteLine("* ■  ■■■  ■■■■■■■  ■     ■  ■■■■■  ■     ■   ■   ■   ■■■■■   ■■■■■   *");
+            Console.WriteLine("* ■     ■ ■     ■  ■     ■  ■      ■     ■    ■ ■    ■       ■  ■    *");
+            Console.WriteLine("*  ■   ■  ■     ■  ■     ■  ■       ■   ■      ■     ■       ■   ■   *");
+            Console.WriteLine("*   ■■■   ■     ■  ■     ■  ■■■■■■   ■■■       ■     ■■■■■■  ■    ■  *");
+            Console.WriteLine("*                                                                    *");
+            Console.WriteLine("**********************************************************************");
+            Console.ResetColor();
         }
 
         private void GameLoop(PlayerType player, DungeonManager dungeonManager,
