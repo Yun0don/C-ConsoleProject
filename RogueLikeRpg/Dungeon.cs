@@ -156,7 +156,7 @@ namespace RogueLikeRpg
                 int x = random.Next(0, Width);
                 int y = random.Next(0, Height);
                 if (Map[y, x] == '.')
-                    Map[y, x] = '▨';
+                    Map[y, x] = 'ㅁ';
                 else
                     i--;
             }
@@ -164,7 +164,7 @@ namespace RogueLikeRpg
 
         public void CheckForDiceItem(Player player)
         {
-            if (Map[player.Y, player.X] == '▨')
+            if (Map[player.Y, player.X] == 'ㅁ')
             {
                 Dice newDice = DiceManager.GetRandomDice();
                 player.EquipDice(newDice);
